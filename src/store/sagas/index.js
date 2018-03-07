@@ -5,7 +5,10 @@
 * @Last Modified time: 2018-03-07 18:19:47
 */
 import { delay } from 'redux-saga';
-import { put, takeEvery, all, call } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest, all, call } from 'redux-saga/effects';
+
+import { ActionTypes } from '@/store/types';
+import { get } from '@/utils/request';
 
 export function* helloSaga() {
   console.log('Hello Sagas!');
@@ -27,11 +30,31 @@ function* watchIncrementAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync);
 }
 
+// github
+function* getRepos({ payload }) {
+  try {
+    const response = yield call(
+      get,
+      `https://api.github.com/search/repositories?q=${payload.query}&sort=stars`
+    );
+    yield put({
+      type: ActionTypes.GITHUB_GET_REPOS_SUCCESS,
+      payload: { data: response.items }
+    });
+  } catch (err) {
+    yield put({
+      type: ActionTypes.GITHUB_GET_REPOS_FAILURE,
+      payload: err
+    });
+  }
+}
+
+function* watchGetRepos() {
+  yield takeLatest(ActionTypes.GITHUB_GET_REPOS_REQUEST, getRepos);
+}
+
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
-  yield all([
-    helloSaga(),
-    watchIncrementAsync()
-  ])
+  yield all([helloSaga(), watchIncrementAsync(), watchGetRepos()]);
 }

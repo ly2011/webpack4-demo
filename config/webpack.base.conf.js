@@ -142,7 +142,20 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: ['.js', '.json', 'jsm','.css', '.less', '.scss', '.sass', '.jsx', '.vue']
+    extensions: ['.js', '.json', 'jsm','.css', '.less', '.scss', '.sass', '.jsx', '.vue'],
+    alias: {
+      '@': resolve('src'),
+      'SRC': resolve('src'),
+      // 'ASSETS': resolve('src/assets'),
+      // 'COMPONENTS': resolve('src/components'),
+      // 'ACTIONS': resolve('src/actions'),
+      // 'CONSTANTS': resolve('src/constants'),
+      'CONTAINERS': resolve('src/containers'),
+      // 'MIDDLEWARE': resolve('src/middleware'),
+      // 'REDUCERS': resolve('src/reducers'),
+      'STORE': resolve('src/store'),
+      'ROUTES': resolve('src/routes')
+    }
   },
   module: {
     rules: [

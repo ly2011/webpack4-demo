@@ -7,3 +7,4 @@
 4. [优雅的提交你的 Git Commit Message](https://zhuanlan.zhihu.com/p/34223150)
 5. [redux-saga英文文档](https://redux-saga.js.org)
 6. [redux-saga中文文档，偏旧](https://redux-saga-in-chinese.js.org)
+7. [react-redux-saga-boilerplate](https://github.com/gilbarbara/react-redux-saga-boilerplate)
