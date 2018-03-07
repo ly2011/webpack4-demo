@@ -4,15 +4,13 @@ import createSagaMiddleware from 'redux-saga';
 import { Button } from 'antd';
 import styles from './App.css';
 import reducer from './store/reducers'
-import { helloSaga, watchIncrementAsync } from './store/sagas'
+import rootSaga from './store/sagas'
 import Counter from './containers/Counter';
 
 const sagaMiddleware = createSagaMiddleware();
-// createSagaMiddleware 接受 Sagas 列表, 这些 Sagas 列表, 这些 Sagas 将会通过创建的 middleware 被立即执行(好像新版本不是这样子的)
+
 export const store = createStore(reducer, applyMiddleware(sagaMiddleware));
-// createSagaMiddleware(helloSaga, watchIncrementAsync)
-sagaMiddleware.run(helloSaga);
-sagaMiddleware.run(watchIncrementAsync);
+sagaMiddleware.run(rootSaga);
 
 const action = type => store.dispatch({ type });
 
