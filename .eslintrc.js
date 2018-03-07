@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['airbnb'],
+  extends: ['react-app'],
   env: {
     browser: true,
     node: true,
@@ -23,6 +23,7 @@ module.exports = {
     "no-debugger": 0,
     "no-console": 0,
     "comma-dangle": 0,
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/href-no-hash": 0
   }
 };

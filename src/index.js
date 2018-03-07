@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-
-import foo from './demo/foo';
-// import bar from './demo/bar';
+import App, { store } from './App';
 import './global.scss';
-import './test.css';
 
-ReactDOM.render(<App />, document.getElementById('app'))
+function render() {
+  ReactDOM.render(<App />, document.getElementById('app'))
+}
+render();
 
-console.info('welcome to webpack4!');
-foo();
+store.subscribe(render);
