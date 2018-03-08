@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App, { store } from './App';
+import App from './App';
 import './global.scss';
 
 function render() {
@@ -8,4 +8,4 @@ function render() {
 }
 render();
 
-store.subscribe(render);
+// store.subscribe(render);
